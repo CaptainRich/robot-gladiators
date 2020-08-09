@@ -79,10 +79,6 @@ var fight = function (enemyName) {
             }
 
 
-            // If the player doesn't skip, ask the quetion again by running "fight()" again
-
-            fight();
-
         } else {
             window.alert("Illegal response, please pick a valid option and try again!");
         }
@@ -93,8 +89,20 @@ var fight = function (enemyName) {
 // Invoke the "Fight" function from a loop (over the enemy robot names)
 
 for( var i = 0; i < enemyNames.length; i++) {
-    var pickedEnemyName = enemyNames[i];
-    enemyHealth = 50;
 
+
+    if( playerHealth > 0 ){
+        window.alert( "Welcome to Robot Gladiators: Round " + (i+1) );
+    }
+    else {
+        window.alert( "You have lost your robot in battle! The game is over!");
+        break;
+    }
+
+    // Select the next enemy robot to fight
+    var pickedEnemyName = enemyNames[i];
+    enemyHealth = 50;                  // reset the enemy robot's health
+
+    // Pass the enemy robot's name to the fight function
     fight( pickedEnemyName );
 }
