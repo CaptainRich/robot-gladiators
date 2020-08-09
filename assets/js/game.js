@@ -10,16 +10,17 @@ var playerMoney = 10;
 console.log(playerName + ",", " Attack = " + playerAttack + ",", " Health = " + playerHealth + " Money = " + playerMoney );
 
 // Define the enemy robot's data
-var enemyName = "Roborto";
+//var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
 // Report the enemy's data to the console
-console.log(enemyName + "(enemy),", " Attack = " + enemyAttack + ",", " Health = " + enemyHealth);
+//console.log(enemyName + "(enemy),", " Attack = " + enemyAttack + ",", " Health = " + enemyHealth);
 
 
 ///////////////////////////////////////////////////////////////////
-var fight = function () {
+var fight = function ( enemyName ) {
     // Alert users they are starting a round
     window.alert("Welcome to Robot Gladiators!");
 
@@ -79,4 +80,9 @@ var fight = function () {
 
 };
 
-fight();
+///////////////////////////////////////////////////////////////////////////////////
+// Invoke the "Fight" function from a loop (over the enemy robot names)
+
+for( var i = 0; i < enemyNames.length; i++) {
+    fight( enemyNames[i] );
+}
