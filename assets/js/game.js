@@ -114,6 +114,8 @@ var startGame = function () {
         var pickedEnemyName = enemyNames[i];
         enemyHealth = randomNumber(40, 60);   // reset the enemy robot's health.  This will return a random value from 40 to 60
 
+        enemyAttack = randomNumber(10, 14);   // reset the enemy robot's health.  This will return a random value between 10 and 14
+
         // Pass the enemy robot's name to the fight function
         fight(pickedEnemyName);
 
