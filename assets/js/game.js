@@ -1,18 +1,6 @@
 
-
-
-
-// Report player data to the console
-//console.log(playerInfo.name + ",", " Attack = " + playerInfo.attack + ",", " Health = " + playerInfo.health + " Money = " + playerInfo.money );
-
-// Define the enemy robot's data
-//var enemyName = "Roborto";
-//var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
-//var enemyHealth = 50;
-//var enemyAttack = 12;
-
-// Report the enemy's data to the console
-//console.log(enemyName + "(enemy),", " Attack = " + enemyAttack + ",", " Health = " + //enemyHealth);
+// Battling Robots
+// Javascript by: Richard Ay, August 2020
 
 ///////////////////////////////////////////////////////////////////
 var fightOrSkip = function () {
@@ -176,6 +164,28 @@ var endGame = function() {
     // If the player is still alive, the player wins!
     if( playerInfo.health > 0 ) {
         window.alert( "Great Job, you've survived the game! You now have a score of " + playerInfo.money + "." );
+
+        // Retrieve (or set) the high score in the browser's local storage
+        var winningRobot = " ";
+
+        var browserScore = localStorage.getItem("highscore");
+        if( browserScore === null ){
+            browserScore = 0;
+        }
+        else {   
+            winningRobot = localStorage.getItem("winner");
+        }
+
+        // If the current score did not beat the earlier winner, report this to the player and take no further action.
+        if( playerInfo.money <= browserScore ) {
+            window.alert( "You did not beat the previous high score of " + browserScore + " posted by " + winningRobot + "." );
+        }
+        else {
+            // Save the new winning information.
+            window.alert( "Your robot is the new high scorer!");
+            localStorage.setItem( "winner", playerInfo.name );
+            localStorage.setItem( "highscore", playerInfo.money );
+        }
     }
     else {
         window.alert( "You've lost your robot in battle." );
