@@ -177,24 +177,29 @@ var endGame = function() {
 var shop = function() {
 
     // Ask what the 'Player' would like to do
-    var shopOptionPrompt = window.prompt( "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a selection." );
+    var shopOptionPrompt = window.prompt( "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 1 for 'REFILL', 2 for 'UPGRADE', or 3 to 'LEAVE'." );
 
-    // Switch based on the 'Player's' response
+    // Switch based on the 'Player's' response, but change the response from a numeric string to an intenger.
+
+    shopOptionPrompt = parseInt( shopOptionPrompt );  // convert to an Integer
 
     switch ( shopOptionPrompt )    {
 
-        case "refill":
-        case "REFILL":
+        //case "refill":
+        //case "REFILL":
+        case 1:
             playerInfo.refillHealth();
             break;
 
-        case "upgrade":
-        case "UPGRADE":
+        //case "upgrade":
+        // case "UPGRADE":
+        case 2:
             playerInfo.upgradeAttack();
             break;
 
-        case "leave":
-        case "LEAVE":
+        //case "leave":
+        //case "LEAVE":
+        case 3:
             window.alert( "Leaving the store." );
             break;                                  // don't adjust anything
 
@@ -247,7 +252,7 @@ var playerInfo = {
             this.money -= 7;
         }
         else {
-            windows.alert("Sorry, you dont' have enough funds for this action.");
+            window.alert("Sorry, you dont' have enough funds for this action.");
         }
     },
 
