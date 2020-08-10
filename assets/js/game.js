@@ -46,53 +46,73 @@ var fightOrSkip = function () {
 ///////////////////////////////////////////////////////////////////
 var fight = function (enemy) {
 
+    // Define a random value to determine which robot fights first
+    var isPlayerTurn = true;          // initialize to 'Player's robot' goes first
+    var robotId      = "Player";
+
+    randomNum = Math.random();
+    if (randomNum > 0.5) {
+        isPlayerTurn = false;         // Enemy goes first if random value is > 0.5
+        robotId      = "Enemy";
+    }
+
+    // Report which robot starts the fight for this round
+    console.log( "Random number is: " + randomNum + "; isPlayerTurn is: " + isPlayerTurn + ", " + robotId + " goes first this round." );
+
     // Repeat and execute as long as the enemy robots are alive and our robot is also alive.
     while (enemy.health > 0 && playerInfo.health > 0) {
 
-        // Ask the player if the fight should be skipped.
-        if (fightOrSkip()) {
-            break;             // leave the fight
-        }
+        if (isPlayerTurn) {
 
-        // If the player selected fight, then continue to fight.
+            // Ask the player if the fight should be skipped.
+            if (fightOrSkip()) {
+                break;             // leave the fight
+            }
 
-        // Subtract the value of 'playerInfo.attack' from the value of 'enemy.health' and use that result to update the value in the 'enemy.health' variable.  Log the result to the console for verification.  We'll use a random value for the effects of 'playerInfo.attack'.
+            // If the player selected fight, then continue to fight.
+            // Subtract the value of 'playerInfo.attack' from the value of 'enemy.health' and use that result to update the value in the 'enemy.health' variable.  Log the result to the console for verification.  We'll use a random value for the effects of 'playerInfo.attack'.
 
-        var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
-        enemy.health = Math.max(0, enemy.health - damage);
+            var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
+            enemy.health = Math.max(0, enemy.health - damage);     // reduce enemy's health
 
-        console.log(playerInfo.name + " attacked " + enemy.name + " with " + damage + " damage. " + enemy.name + " now has " + enemy.health + " health remaining.");
+            console.log(playerInfo.name + " attacked " + enemy.name + " with " + damage + " damage. " + enemy.name + " now has " + enemy.health + " health remaining.");
 
 
-        // Check the enemy's health.
+            // Check the enemy's health.
 
-        if (enemy.health <= 0) {
-            window.alert(enemy.name + " has died!");
+            if (enemy.health <= 0) {
+                window.alert(enemy.name + " has died!");
 
-            // Award player's robot for defeating an enemy
-            playerInfo.money += 20;
-            break;                   // exit enemy robot fight if it dies
-        }
-        else {
-            window.alert(enemy.name + " still has " + enemy.health + " health left.");
-        }
-
-        // Subtract the value of 'enemy.attack' from the value of 'playerInfo.health' and use that result to update the value in the 'playerInfo.health" variable.  Log the result to the console for verification.  Here also, use a random value for the 'enemy.attack" effect.
-
-        var damage = randomNumber(enemy.attack - 3, enemy.attack);
-        playerInfo.health = Math.max(0, playerInfo.health - damage);
-
-        console.log(enemy.name + " attacked " + playerInfo.name + " with " + damage + " damage. " + playerInfo.name + " now has " + playerInfo.health + " health remaining and " + playerInfo.money + " money remaining.");
-
-        // Check our player's health.
-
-        if (playerInfo.health <= 0) {
-            window.alert(playerInfo.name + " has died!");
-            break;          // exit the fight on death
+                // Award player's robot for defeating an enemy
+                playerInfo.money += 20;
+                break;                   // exit enemy robot fight if it dies
+            }
+            else {
+                window.alert(enemy.name + " still has " + enemy.health + " health left.");
+            }
         }
         else {
-            window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
+            // Player gets attacked
+            // Subtract the value of 'enemy.attack' from the value of 'playerInfo.health' and use that result to update the value in the 'playerInfo.health" variable.  Log the result to the console for verification.  Here also, use a random value for the 'enemy.attack" effect.
+
+            var damage = randomNumber(enemy.attack - 3, enemy.attack);
+            playerInfo.health = Math.max(0, playerInfo.health - damage);  // reduce player's health
+
+            console.log(enemy.name + " attacked " + playerInfo.name + " with " + damage + " damage. " + playerInfo.name + " now has " + playerInfo.health + " health remaining and " + playerInfo.money + " money remaining.");
+
+            // Check our player's health.
+
+            if (playerInfo.health <= 0) {
+                window.alert(playerInfo.name + " has died!");
+                break;          // exit the fight on death
+            }
+            else {
+                window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
+            }
         }
+
+        // Switch the order of fighters for the next round.
+        isPlayerTurn = !isPlayerTurn;
     }
 };
 
