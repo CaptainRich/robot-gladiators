@@ -1,6 +1,7 @@
 
 // Battling Robots
 // Javascript by: Richard Ay, August 2020
+//                Updated: November 2021
 
 ///////////////////////////////////////////////////////////////////
 var fightOrSkip = function () {
@@ -269,6 +270,8 @@ var playerInfo = {
     attack: 10,
     money: 10,
 
+
+    // These are object (class) functions
     reset: function() {
         this.health = 100;
         this.money  = 10;
@@ -298,6 +301,7 @@ var playerInfo = {
     }
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////
 // Define the enemy robot objects, in an array.
 var enemyInfo = [
     { name: "Roborto",
@@ -313,7 +317,7 @@ var enemyInfo = [
     }
 ];
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////
 // Start the game when the page loads
 
 startGame();
