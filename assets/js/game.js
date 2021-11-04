@@ -148,7 +148,7 @@ var startGame = function () {
         if( (playerInfo.health > 0) && (i < (enemyInfo.length - 1)) ) {
             var storeConfirm = window.confirm( "The fight is over, visit the store before the next round?");
 
-            // On an afirmative response, enter the store
+            // On an affirmative response, enter the store
             if( storeConfirm ) {
                 shop();
             }
@@ -210,7 +210,7 @@ var shop = function() {
     // Ask what the 'Player' would like to do
     var shopOptionPrompt = window.prompt( "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 1 for 'REFILL', 2 for 'UPGRADE', or 3 to 'LEAVE'." );
 
-    // Switch based on the 'Player's' response, but change the response from a numeric string to an intenger.
+    // Switch based on the 'Player's' response, but change the response from a numeric string to an integer.
 
     shopOptionPrompt = parseInt( shopOptionPrompt );  // convert to an Integer
 
