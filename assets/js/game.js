@@ -208,31 +208,23 @@ var endGame = function() {
 var shop = function() {
 
     // Ask what the 'Player' would like to do
-    var shopOptionPrompt = window.prompt( "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 1 for 'REFILL', 2 for 'UPGRADE', or 3 to 'LEAVE'." );
+    var shopOptionPrompt = window.prompt( "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter 'REFILL', 'UPGRADE', or 'LEAVE'." );
 
     shopOptionPrompt = shopOptionPrompt.toLowerCase();
 
-    // Switch based on the 'Player's' response, but change the response from a numeric string to an integer.
-
-    //shopOptionPrompt = parseInt( shopOptionPrompt );  // convert to an Integer
+    // Switch based on the 'Player's' response, note the response is converted to 'lower case'.
 
     switch ( shopOptionPrompt )    {
 
         case "refill":
-        //case "REFILL":
-        //case 1:
             playerInfo.refillHealth();
             break;
 
         case "upgrade":
-        // case "UPGRADE":
-        //case 2:
             playerInfo.upgradeAttack();
             break;
 
         case "leave":
-        //case "LEAVE":
-        //case 3:
             window.alert( "Leaving the store." );
             break;                                  // don't adjust anything
 
@@ -294,7 +286,7 @@ var playerInfo = {
     upgradeAttack: function() {
         if (this.money >= 6) {
             window.alert("Upgrading player's attack by 6 for 6 dollars.");
-            this.attack += 6;
+            this.attack += 8;
             this.money -= 6;
         }
         else {
@@ -307,15 +299,15 @@ var playerInfo = {
 // Define the enemy robot objects, in an array.
 var enemyInfo = [
     { name: "Roborto",
-      attack: randomNumber(10, 14)
+      attack: randomNumber(8, 12)
     },
 
     { name: "Amy Android",
-      attack: randomNumber(10, 14)
+      attack: randomNumber(8, 12)
     },
 
     { name: "Robo Trumble",
-      attack: randomNumber(10, 14)
+      attack: randomNumber(8, 12)
     }
 ];
 
