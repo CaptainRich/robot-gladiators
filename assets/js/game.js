@@ -130,7 +130,7 @@ var startGame = function () {
 
         // Select the next enemy robot to fight
         var pickedEnemyObj = enemyInfo[i];
-        pickedEnemyObj.health = randomNumber(40, 60);   // reset the enemy robot's health.  This will return a random value from 40 to 60
+        pickedEnemyObj.health = randomNumber(30, 50);   // reset the enemy robot's health.  This will return a random value from 30 to 50
 
         // Enemy attack values now defined in the objects.
         //pickedEnemyObj.Attack = randomNumber(10, 14);   // reset the enemy robot's health.  This will return a random value between 10 and 14
@@ -189,7 +189,7 @@ var endGame = function() {
         }
     }
     else {
-        window.alert( "You've lost your robot in battle." );
+        window.alert( "You've lost your robot in battle, your robot was defeated." );
     }
 
     // Ask if another game should be played
