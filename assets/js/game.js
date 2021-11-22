@@ -210,27 +210,29 @@ var shop = function() {
     // Ask what the 'Player' would like to do
     var shopOptionPrompt = window.prompt( "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 1 for 'REFILL', 2 for 'UPGRADE', or 3 to 'LEAVE'." );
 
+    shopOptionPrompt = shopOptionPrompt.toLowerCase();
+
     // Switch based on the 'Player's' response, but change the response from a numeric string to an integer.
 
-    shopOptionPrompt = parseInt( shopOptionPrompt );  // convert to an Integer
+    //shopOptionPrompt = parseInt( shopOptionPrompt );  // convert to an Integer
 
     switch ( shopOptionPrompt )    {
 
-        //case "refill":
+        case "refill":
         //case "REFILL":
-        case 1:
+        //case 1:
             playerInfo.refillHealth();
             break;
 
-        //case "upgrade":
+        case "upgrade":
         // case "UPGRADE":
-        case 2:
+        //case 2:
             playerInfo.upgradeAttack();
             break;
 
-        //case "leave":
+        case "leave":
         //case "LEAVE":
-        case 3:
+        //case 3:
             window.alert( "Leaving the store." );
             break;                                  // don't adjust anything
 
