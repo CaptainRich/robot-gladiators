@@ -23,7 +23,7 @@ var fightOrSkip = function () {
         // If "yes/true", leave the fight.
         if (confirmSkip) {
             window.alert(playerInfo.name + " has decided to skip this fight.  Goodbye!");
-            playerInfo.money = Math.max(0, playerInfo.money - 10);    // deduct money from the player for skipping
+            playerInfo.money = Math.max(0, playerInfo.money - 10);    // deduct money from player for skipping, limit is zero
             console.log("playerInfo.money", playerInfo.money);
             return true;                                  
         }
@@ -62,7 +62,7 @@ var fight = function (enemy) {
             // Subtract the value of 'playerInfo.attack' from the value of 'enemy.health' and use that result to update the value in the 'enemy.health' variable.  Log the result to the console for verification.  We'll use a random value for the effects of 'playerInfo.attack'.
 
             var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
-            enemy.health = Math.max(0, enemy.health - damage);     // reduce enemy's health
+            enemy.health = Math.max(0, enemy.health - damage);     // reduce enemy's health, but the limit is zero
 
             console.log(playerInfo.name + " attacked " + enemy.name + " with " + damage + " damage. " + enemy.name + " now has " + enemy.health + " health remaining.");
 
@@ -84,8 +84,8 @@ var fight = function (enemy) {
             // Player gets attacked
             // Subtract the value of 'enemy.attack' from the value of 'playerInfo.health' and use that result to update the value in the 'playerInfo.health" variable.  Log the result to the console for verification.  Here also, use a random value for the 'enemy.attack" effect.
 
-            var damage = randomNumber(enemy.attack - 3, enemy.attack);
-            playerInfo.health = Math.max(0, playerInfo.health - damage);  // reduce player's health
+            var damage = randomNumber(enemy.attack - 4, enemy.attack);
+            playerInfo.health = Math.max(0, playerInfo.health - damage);  // reduce player's health, but the limit is zero
 
             console.log(enemy.name + " attacked " + playerInfo.name + " with " + damage + " damage. " + playerInfo.name + " now has " + playerInfo.health + " health remaining and " + playerInfo.money + " money remaining.");
 
