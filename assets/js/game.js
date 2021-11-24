@@ -111,7 +111,7 @@ var startGame = function () {
 
     // Reset the "Player's" data on a game start/re-start
     playerInfo.reset();
-    // playerInfo.health = 100;
+    // playerInfo.health = 100;       // this is now handled in the 'reset()' method of the object
     // playerInfo.money  = 10;
     // playerInfo.attack = 10;
 
@@ -265,7 +265,7 @@ var playerInfo = {
     money: 10,
 
 
-    // These are object (class) functions
+    // These are object (class) functions (methods)
     reset: function() {
         this.health = 100;
         this.money  = 10;
@@ -299,7 +299,7 @@ var playerInfo = {
 // Define the enemy robot objects, in an array.
 var enemyInfo = [
     { name: "Roborto",
-      attack: randomNumber(8, 12)
+      attack: randomNumber(8, 12)  // note 'randomNumber()' must be defined before it is used
     },
 
     { name: "Amy Android",
