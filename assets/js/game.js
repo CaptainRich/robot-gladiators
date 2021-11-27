@@ -246,7 +246,7 @@ var randomNumber = function( min, max ) {
 ///////////////////////////////////////////////////////////////////////////////////
 // Define a function to acquire a valid 'player's' name
 var getPlayerName = function() {
-    var name = "";
+    var name = "";                // guarantees the loop is entered at least once.
 
     while( name === "" || name === null ){
         name = prompt("What is your robot's name?");
@@ -258,6 +258,7 @@ var getPlayerName = function() {
 ///////////////////////////////////////////////////////////////////////////////////
 // Define the 'player' and 'enemy' objects
 // Obtain/define the main game variables, first a 'player' object.
+// Note that the function 'getPlayerName' must be defined (encountered) before usage.
 var playerInfo = {
     name: getPlayerName(),
     health: 100,
