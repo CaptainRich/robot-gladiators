@@ -23,7 +23,7 @@ var fightOrSkip = function () {
         // If "yes/true", leave the fight.
         if (confirmSkip) {
             window.alert(playerInfo.name + " has decided to skip this fight.  Goodbye!");
-            playerInfo.money = Math.max(0, playerInfo.money - 10);    // deduct money from player for skipping, limit is zero
+            playerInfo.money = Math.max(0, playerInfo.money - 7);    // deduct money from player for skipping, limit is zero
             console.log("playerInfo.money", playerInfo.money);
             return true;                                  
         }
@@ -53,7 +53,7 @@ var fight = function (enemy) {
 
         if (isPlayerTurn) {
 
-            // Ask the player if the fight should be skipped.
+            // Ask the player if the fight should be skipped.  The 'fightOrSkip' function returns 'true' on 'skip'.
             if (fightOrSkip()) {
                 break;             // leave the fight
             }
@@ -208,23 +208,27 @@ var endGame = function() {
 var shop = function() {
 
     // Ask what the 'Player' would like to do
-    var shopOptionPrompt = window.prompt( "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter 'REFILL', 'UPGRADE', or 'LEAVE'." );
+    var shopOptionPrompt = window.prompt( "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter (1) to refill, (2) to upgrade, or (3) to leave." );
 
-    shopOptionPrompt = shopOptionPrompt.toLowerCase();
+    //shopOptionPrompt = shopOptionPrompt.toLowerCase();
+    shopOptionPrompt = parseInt( shopOptionPrompt );
 
     // Switch based on the 'Player's' response, note the response is converted to 'lower case'.
 
     switch ( shopOptionPrompt )    {
 
-        case "refill":
+        //case "refill":
+        case 1:
             playerInfo.refillHealth();
             break;
 
-        case "upgrade":
+        //case "upgrade":
+        case 2:
             playerInfo.upgradeAttack();
             break;
 
-        case "leave":
+        //case "leave":
+        case 3:
             window.alert( "Leaving the store." );
             break;                                  // don't adjust anything
 
@@ -263,13 +267,13 @@ var playerInfo = {
     name: getPlayerName(),
     health: 100,
     attack: 10,
-    money: 10,
+    money: 25,
 
 
     // These are object (class) functions (methods)
     reset: function() {
         this.health = 100;
-        this.money  = 10;
+        this.money  = 25;
         this.attack = 10;
     },
 
