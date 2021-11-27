@@ -7,7 +7,7 @@ Richard Ay, August 2020
 
 
 ## Project Description
-A lesson in JavaScript.  This game implements functions and variables in JavaScript.  This game also implements "Math" functions, variables, and logic operators.
+A lesson in JavaScript.  This game utilizes primitive data types, implements functions and variables in JavaScript.  This game also implements "Math" functions, variables, and logic operators.
 
 
 ## Link to Deployed Page
