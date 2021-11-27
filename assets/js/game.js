@@ -183,7 +183,7 @@ var endGame = function() {
         }
         else {
             // Save the new winning information.
-            window.alert( "Your robot is the new high scorer!");
+            window.alert( "Your robot is the new high scorer, data saved in localStorage!");
             localStorage.setItem( "winner", playerInfo.name );
             localStorage.setItem( "highscore", playerInfo.money );
         }
